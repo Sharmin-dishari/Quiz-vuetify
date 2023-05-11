@@ -1,7 +1,7 @@
 <template>
   <div class="px-6 px-md-16">
     <div v-for="(item, index) in items" :key="index" class="my-4">
-      <v-list class="bg-white pl-2 rounded-xl border">
+      <v-list class="bg-white pl-2 rounded-xl border elevation-2">
         <v-row>
           <v-col sm="2" lg="2" md="2" cols="4"
             ><v-img class="imageStyle" :src="item.avatar"
@@ -120,7 +120,7 @@ export default {
   color: grey;
 }
 .border {
-  border: 1px solid #dfdfdf;
+  border: 1px solid black;
 }
 .title-font {
   font-size: 1.2rem;
