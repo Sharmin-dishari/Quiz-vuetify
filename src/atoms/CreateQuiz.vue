@@ -18,7 +18,7 @@
           Back
         </v-btn>
         <v-btn
-         large
+          large
           v-if="$vuetify.breakpoint.smAndUp"
           color="#182e46"
           class="ma-2 white--text rounded-pill"
@@ -44,13 +44,25 @@
       </v-col>
     </v-row>
     <QuizForm class="pb-10" />
+    <!-- <v-fab-transition>
+      <v-btn v-show="!hidden" color="pink" dark absolute top right fab>
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-fab-transition> -->
     <v-row justify="space-between" class="px-md-16 px-5">
       <v-col v-if="$vuetify.breakpoint.smAndUp"> </v-col>
       <v-col
         class="fixedButton pt-10"
         :align="$vuetify.breakpoint.smAndUp ? 'end' : 'center'"
       >
-        <v-btn large tile dark class="rounded-pill" color="#A1A1A1" to="/quiz-board">
+        <v-btn
+          large
+          tile
+          dark
+          class="rounded-pill"
+          color="#A1A1A1"
+          to="/quiz-board"
+        >
           <v-icon left> mdi-arrow-left </v-icon>
           Back
         </v-btn>
@@ -93,16 +105,14 @@ export default {
 </script>
 <style>
 .fixedButton {
-  position: fixed;
-  bottom: .5rem;
+  bottom: 1rem;
   right: 2rem;
 }
 
 @media only screen and (max-width: 600px) {
   .fixedButton {
-    position: fixed;
     margin-top: 10vh;
-    bottom: 1rem;
+    bottom: 0.5rem;
     right: 0;
   }
 }

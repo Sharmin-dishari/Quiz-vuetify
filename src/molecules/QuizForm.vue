@@ -8,7 +8,7 @@
             <v-text-field
               label="Enter Quiz title"
               class="rounded-pill"
-              outlined 
+              outlined
               v-model="quiz_title"
             ></v-text-field>
             <div class="font-weight-medium mb-2">Description</div>
@@ -22,7 +22,7 @@
             <div class="font-weight-medium">Quiz Type</div>
             <v-radio-group v-model="quiz_type" row>
               <v-radio
-               class="radio-large"
+                class="radio-large"
                 color="#30C7B3"
                 label="Public"
                 value="option1"
@@ -42,8 +42,12 @@
               Quiz Image
             </div>
             <div
-             :class="this.$vuetify.breakpoint.width < 600 ? 'dashed2' : 'dashed'"
+              :class="
+                this.$vuetify.breakpoint.width < 600 ? 'dashed2' : 'dashed'
+              "
               align="center"
+              @dragover="handleDragOver"
+              @drop="handleDrop"
             >
               <label for="file-btn" class="upload" style="cursor: pointer">
                 <input
@@ -87,15 +91,23 @@ export default {
   },
   methods: {
     async handleFileUpload(event) {
-      this.file = event.target.files[0];
-      this.url = URL.createObjectURL(this.file);
+      const file = event.target.files[0];
+      this.url = URL.createObjectURL(file);
+    },
+    handleDragOver(event) {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = "copy";
+    },
+    handleDrop(event) {
+      event.preventDefault();
+      const files = event.dataTransfer.files;
+      this.url = URL.createObjectURL(files[0]);
     },
   },
 };
 </script>
 
 <style>
-
 .form-bg {
   background-color: white;
   border: 1px solid #dfdfdf;
@@ -107,11 +119,5 @@ export default {
 .dashed {
   padding: 15vh 0;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%234F92E3FF' stroke-width='2' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
-
-
-
-  
 }
-
-
 </style>
